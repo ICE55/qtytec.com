@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>乾腾元科技 QTY Technology · AI 驱动，智创未来</title>
+<meta name="description" content="杭州乾腾元科技有限公司：以人工智能应用软件与基础软件开发为核心，提供系统集成、软件开发、信息技术咨询与数据处理的一体化技术服务。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2304101F'/%3E%3Ctext x='32' y='45' font-family='Arial' font-weight='700' font-size='38' text-anchor='middle' fill='%232FD8F5'%3EQ%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #04101F;
+    --bg2: #081a30;
+    --card: #0b2140;
+    --line: #17375c;
+    --navy: #123A66;
+    --cyan: #2FD8F5;
+    --cyan-soft: #7FD8EE;
+    --sky: #60AAE1;
+    --text: #E9F3FF;
+    --muted: #90ABCA;
+    --dim: #5D7B9C;
+    --num: "DIN Alternate", "DIN Condensed", "Bahnschrift", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7; -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+  /* 导航 */
+  header {
+    position: fixed; inset: 0 0 auto 0; z-index: 10;
+    background: rgba(4, 16, 31, .82); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(47, 216, 245, .12);
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .5px; }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center;
+    background: var(--navy); color: var(--cyan); font-family: var(--num); font-size: 20px;
+    box-shadow: 0 0 0 1px rgba(47, 216, 245, .35) inset;
+  }
+  .brand small { display: block; font-size: 10px; font-weight: 500; color: var(--muted); letter-spacing: 2px; line-height: 1.2; }
+  nav { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
+  nav a:hover { color: var(--cyan); }
+  .nav-cta { padding: 8px 18px; border-radius: 999px; border: 1px solid var(--cyan); color: var(--cyan); font-size: 14px; }
+  .nav-cta:hover { background: var(--cyan); color: var(--bg); }
+
+  /* 首屏 */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;
+    padding: 120px 0 80px;
+    background:
+      radial-gradient(900px 520px at 78% 30%, rgba(47, 216, 245, .16), transparent 60%),
+      radial-gradient(700px 500px at 10% 90%, rgba(96, 170, 225, .12), transparent 60%),
+      var(--bg);
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(127, 216, 238, .06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(127, 216, 238, .06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at 60% 40%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at 60% 40%, #000 30%, transparent 75%);
+  }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+  .eyebrow { font-family: var(--num); letter-spacing: 6px; color: var(--cyan); font-size: 15px; }
+  .hero h1 { font-size: clamp(44px, 6.4vw, 80px); line-height: 1.1; margin: 18px 0 14px; font-weight: 800; letter-spacing: 2px; }
+  .hero h1 span { color: var(--cyan); }
+  .hero .slogan { font-size: clamp(20px, 2.4vw, 28px); color: var(--cyan-soft); letter-spacing: 4px; }
+  .hero p.lead { margin-top: 22px; color: var(--muted); max-width: 560px; font-size: 16px; }
+  .hero-actions { margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 13px 28px; border-radius: 999px; font-size: 15px; font-weight: 600; transition: .2s; }
+  .btn-primary { background: var(--cyan); color: var(--bg); }
+  .btn-primary:hover { background: var(--cyan-soft); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+  .hero-company { margin-top: 48px; font-size: 13px; color: var(--dim); letter-spacing: 1px; }
+
+  .orbit { position: relative; aspect-ratio: 1; max-width: 440px; width: 100%; justify-self: center; }
+  .orbit .ring { position: absolute; border-radius: 50%; border: 1px solid rgba(47, 216, 245, .25); }
+  .orbit .r1 { inset: 0; animation: spin 40s linear infinite; }
+  .orbit .r2 { inset: 14%; border-style: dashed; border-color: rgba(96, 170, 225, .35); animation: spin 28s linear infinite reverse; }
+  .orbit .r3 { inset: 30%; border-color: rgba(47, 216, 245, .45); }
+  .orbit .dot { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 18px var(--cyan); }
+  .orbit .r1 .dot { top: -6px; left: calc(50% - 6px); }
+  .orbit .r2 .dot { bottom: 8%; left: 6%; background: var(--sky); box-shadow: 0 0 14px var(--sky); }
+  .orbit .core {
+    position: absolute; inset: 38%; border-radius: 50%; display: grid; place-items: center;
+    background: radial-gradient(circle at 35% 30%, #1d5a8f, var(--navy) 60%, #0a2443);
+    box-shadow: 0 0 60px rgba(47, 216, 245, .35);
+    font-family: var(--num); font-size: clamp(30px, 4vw, 46px); color: var(--cyan); letter-spacing: 2px;
+  }
+  .orbit .tag {
+    position: absolute; padding: 6px 14px; border-radius: 999px; font-size: 13px;
+    background: rgba(11, 33, 64, .9); border: 1px solid var(--line); color: var(--text); white-space: nowrap;
+  }
+  .orbit .t1 { top: 8%; right: -4%; }
+  .orbit .t2 { top: 46%; left: -10%; }
+  .orbit .t3 { bottom: 6%; right: 2%; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* 通用区块 */
+  section.block { padding: 110px 0; }
+  section.alt { background: var(--bg2); }
+  .sec-head { margin-bottom: 56px; }
+  .sec-head .chapter { font-family: var(--num); color: var(--cyan); letter-spacing: 4px; font-size: 14px; }
+  .sec-head h2 { font-size: clamp(30px, 3.6vw, 42px); margin-top: 8px; font-weight: 700; }
+  .sec-head h2 em { font-style: normal; font-family: var(--num); font-weight: 400; font-size: .5em; color: var(--dim); margin-left: 14px; letter-spacing: 2px; }
+  .sec-head p { margin-top: 12px; color: var(--muted); max-width: 680px; }
+
+  .card {
+    background: linear-gradient(160deg, rgba(18, 58, 102, .55), rgba(11, 33, 64, .55));
+    border: 1px solid var(--line); border-radius: 18px; padding: 30px;
+    transition: border-color .25s, transform .25s;
+  }
+  .card:hover { border-color: rgba(47, 216, 245, .5); transform: translateY(-3px); }
+  .num { font-family: var(--num); color: var(--cyan); }
+
+  /* 公司简介 */
+  .about { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: start; }
+  .about h3 { font-size: 24px; margin-bottom: 14px; }
+  .about .intro { color: var(--muted); font-size: 16px; }
+  .about .motto {
+    margin-top: 28px; padding: 18px 24px; border-radius: 14px;
+    background: rgba(47, 216, 245, .08); color: var(--cyan-soft); font-size: 18px; letter-spacing: 2px;
+  }
+  .facts { display: grid; gap: 16px; }
+  .facts .card { padding: 22px 26px; }
+  .facts h4 { font-size: 15px; color: var(--cyan); margin-bottom: 6px; letter-spacing: 1px; }
+  .facts p { color: var(--text); font-size: 15px; }
+
+  .mvv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 60px; }
+  .mvv .card { text-align: left; }
+  .mvv .en { font-family: var(--num); letter-spacing: 4px; color: var(--dim); font-size: 13px; }
+  .mvv h4 { font-size: 22px; margin: 6px 0 12px; }
+  .mvv p { color: var(--muted); }
+  .icon {
+    width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 18px;
+    background: rgba(47, 216, 245, .12); color: var(--cyan);
+  }
+  .icon svg { width: 22px; height: 22px; }
+
+  /* 架构 */
+  .stack { display: grid; gap: 14px; }
+  .layer {
+    display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: stretch;
+    background: rgba(11, 33, 64, .6); border: 1px solid var(--line); border-radius: 16px; padding: 18px;
+  }
+  .layer .lv { display: flex; flex-direction: column; justify-content: center; padding-left: 8px; }
+  .layer .lv b { font-family: var(--num); font-size: 30px; color: var(--cyan); line-height: 1; }
+  .layer .lv span { font-size: 17px; font-weight: 600; margin-top: 6px; }
+  .layer .lv small { font-family: var(--num); color: var(--dim); letter-spacing: 3px; font-size: 11px; }
+  .layer .items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .layer .item { background: rgba(18, 58, 102, .55); border-radius: 12px; padding: 14px 18px; }
+  .layer .item h5 { font-size: 16px; margin-bottom: 4px; }
+  .layer .item p { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+  .layer:nth-child(1) { border-color: rgba(47, 216, 245, .45); }
+
+  .matrix { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 70px; }
+  .matrix .card h4 { font-size: 18px; margin: 10px 0 10px; line-height: 1.45; }
+  .matrix .card p { color: var(--muted); font-size: 14.5px; }
+  .matrix .card .num { font-size: 34px; line-height: 1; }
+  .note { margin-top: 26px; color: var(--dim); font-size: 14px; }
+
+  /* 流程 */
+  .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; position: relative; }
+  .flow::before {
+    content: ""; position: absolute; top: 27px; left: 7%; right: 7%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent); opacity: .5;
+  }
+  .step { position: relative; text-align: left; }
+  .step .circle {
+    width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 20px;
+    background: var(--bg2); border: 1px solid var(--cyan); font-family: var(--num); font-size: 20px; color: var(--cyan);
+  }
+  section.alt .step .circle { background: var(--bg2); }
+  .step h4 { font-size: 19px; margin-bottom: 8px; }
+  .step p { color: var(--muted); font-size: 14px; min-height: 72px; }
+  .step .out { margin-top: 14px; display: inline-block; font-size: 12.5px; color: var(--cyan-soft); padding: 4px 12px; border-radius: 999px; background: rgba(47, 216, 245, .1); }
+  .principle {
+    margin-top: 50px; padding: 20px 26px; border-radius: 14px; border: 1px dashed rgba(47, 216, 245, .4);
+    display: flex; gap: 16px; align-items: center; color: var(--text);
+  }
+  .principle b { color: var(--cyan); white-space: nowrap; }
+
+  /* 交付模式 */
+  .versus { display: grid; grid-template-columns: 1fr auto 1fr; gap: 22px; align-items: stretch; }
+  .versus .vs { align-self: center; font-family: var(--num); font-size: 26px; color: var(--dim); }
+  .model .tagline { font-family: var(--num); letter-spacing: 4px; color: var(--cyan); font-size: 13px; }
+  .model h4 { font-size: 24px; margin: 6px 0 18px; }
+  .model ul { list-style: none; display: grid; gap: 10px; }
+  .model li { position: relative; padding-left: 22px; color: var(--text); font-size: 15px; }
+  .model li::before { content: ""; position: absolute; left: 2px; top: .7em; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); }
+  .model .fit { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  .model .fit b { color: var(--cyan-soft); font-weight: 600; }
+
+  .guarantees { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 70px; }
+  .guarantees .card .top { display: flex; justify-content: space-between; align-items: baseline; }
+  .guarantees .card .num { font-size: 40px; line-height: 1; }
+  .guarantees .card .pill { font-size: 13px; color: var(--cyan); border: 1px solid rgba(47, 216, 245, .4); padding: 2px 12px; border-radius: 999px; }
+  .guarantees h4 { font-size: 20px; margin: 18px 0 10px; }
+  .guarantees p { color: var(--muted); font-size: 14.5px; }
+
+  /* 团队 */
+  .team { display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: start; }
+  .team .pitch h3 { font-size: clamp(26px, 3vw, 34px); line-height: 1.4; }
+  .team .pitch h3 span { color: var(--cyan); }
+  .team .pitch p { margin-top: 20px; color: var(--muted); }
+  .roles { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .roles .card { padding: 24px; }
+  .roles h4 { font-size: 17px; margin-bottom: 8px; }
+  .roles p { color: var(--muted); font-size: 14px; }
+
+  .ways { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 22px; margin-top: 70px; align-items: stretch; }
+  .ways .card { display: flex; flex-direction: column; }
+  .ways .card.main { border-color: rgba(47, 216, 245, .55); background: linear-gradient(160deg, rgba(29, 90, 143, .55), rgba(11, 33, 64, .7)); }
+  .ways .label { display: flex; justify-content: space-between; align-items: center; }
+  .ways .label span { font-family: var(--num); letter-spacing: 4px; color: var(--cyan); font-size: 13px; }
+  .ways .label em { font-style: normal; font-size: 12px; background: var(--cyan); color: var(--bg); padding: 2px 10px; border-radius: 999px; font-weight: 600; }
+  .ways h4 { font-size: 21px; margin: 10px 0 12px; }
+  .ways p { color: var(--muted); font-size: 14.5px; }
+  .ways ul { list-style: none; margin-top: 18px; display: grid; gap: 8px; font-size: 14px; }
+  .ways li { padding-left: 20px; position: relative; }
+  .ways li::before { content: "✓"; position: absolute; left: 0; color: var(--cyan); }
+
+  /* 联系 */
+  .contact {
+    display: grid; grid-template-columns: 1.25fr .75fr; gap: 50px; align-items: center;
+    background: radial-gradient(600px 300px at 90% 0%, rgba(47, 216, 245, .15), transparent 70%), var(--card);
+    border: 1px solid var(--line); border-radius: 24px; padding: 56px;
+  }
+  .contact h3 { font-size: clamp(22px, 2.3vw, 28px); line-height: 1.55; }
+  .contact .sub { margin-top: 16px; color: var(--muted); }
+  .contact-list { display: grid; gap: 16px; }
+  .contact-item { display: flex; gap: 16px; align-items: center; padding: 16px 20px; border-radius: 14px; background: rgba(4, 16, 31, .5); }
+  .contact-item .icon { margin: 0; flex: none; }
+  .contact-item small { display: block; font-family: var(--num); letter-spacing: 3px; color: var(--dim); font-size: 11px; }
+  .contact-item a, .contact-item span { font-size: 16px; }
+  .contact-item a:hover { color: var(--cyan); }
+
+  footer { padding: 40px 0 50px; border-top: 1px solid var(--line); margin-top: 0; color: var(--dim); font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  footer a:hover { color: var(--cyan); }
+
+  @media (max-width: 980px) {
+    nav { display: none; }
+    .hero .wrap, .about, .team, .contact { grid-template-columns: 1fr; }
+    .orbit { max-width: 320px; }
+    .mvv, .guarantees, .ways { grid-template-columns: 1fr; }
+    .matrix { grid-template-columns: 1fr 1fr; }
+    .layer { grid-template-columns: 1fr; }
+    .layer .items { grid-template-columns: 1fr; }
+    .flow { grid-template-columns: 1fr; }
+    .flow::before { display: none; }
+    .step p { min-height: 0; }
+    .versus { grid-template-columns: 1fr; }
+    .contact { padding: 34px 26px; }
+  }
+  @media (max-width: 600px) {
+    .matrix, .roles { grid-template-columns: 1fr; }
+    section.block { padding: 80px 0; }
+    .orbit .tag { display: none; }
+    .principle { flex-direction: column; align-items: flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce) { .orbit .ring { animation: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="brand-mark">Q</span>
+      <span>乾腾元科技<small>QTY TECHNOLOGY</small></span>
+    </a>
+    <nav>
+      <a href="#about">公司概况</a>
+      <a href="#capabilities">业务能力</a>
+      <a href="#delivery">交付体系</a>
+      <a href="#team">关于我们</a>
+    </nav>
+    <a class="nav-cta" href="#contact">联系我们</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">QTY TECHNOLOGY</div>
+        <h1>乾腾元<span>科技</span></h1>
+        <div class="slogan">AI 驱动 · 智创未来</div>
+        <p class="lead">以人工智能应用软件与基础软件开发为核心，向行业客户提供系统集成、软件开发、信息技术咨询与数据处理的一体化技术服务，把技术能力转化为可运行的业务系统。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">聊聊你的业务问题</a>
+          <a class="btn btn-ghost" href="#capabilities">了解业务能力</a>
+        </div>
+        <div class="hero-company">杭州乾腾元科技有限公司　｜　QTY Technology Co., Ltd.</div>
+      </div>
+      <div class="orbit" aria-hidden="true">
+        <div class="ring r1"><i class="dot"></i></div>
+        <div class="ring r2"><i class="dot"></i></div>
+        <div class="ring r3"></div>
+        <div class="core">QTY</div>
+        <span class="tag t1">AI 应用开发</span>
+        <span class="tag t2">系统集成</span>
+        <span class="tag t3">数据处理</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 公司概况 -->
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="chapter">CHAPTER 01</div>
+        <h2>公司概况<em>COMPANY OVERVIEW</em></h2>
+        <p>一家以人工智能为核心的科技型企业</p>
+      </div>
+      <div class="about">
+        <div>
+          <h3>专注人工智能与数字化技术的创新型科技企业</h3>
+          <p class="intro">杭州乾腾元科技有限公司以人工智能应用软件与基础软件开发为核心，向行业客户提供系统集成、软件开发、信息技术咨询与数据处理的一体化技术服务，把技术能力转化为可运行的业务系统。</p>
+          <div class="motto">技术驱动创新，专业成就价值</div>
+        </div>
+        <div class="facts">
+          <div class="card">
+            <h4>核心业务</h4>
+            <p>人工智能软件开发　·　行业应用系统集成　·　技术服务与咨询　·　数据处理</p>
+          </div>
+          <div class="card">
+            <h4>服务理念</h4>
+            <p>以客户真实业务场景为起点，用可交付、可演进的技术方案回应需求</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mvv">
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div>
+          <div class="en">MISSION</div>
+          <h4>使命</h4>
+          <p>用 AI 技术赋能千行百业，推动产业数字化转型</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="en">VISION</div>
+          <h4>愿景</h4>
+          <p>成为领先的人工智能与数字化解决方案提供商</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7 3.5C19 16.5 12 21 12 21z"/></svg></div>
+          <div class="en">VALUES</div>
+          <h4>价值观</h4>
+          <p>创新　·　专业　·　诚信　·　共赢</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 业务能力 -->
+  <section class="block alt" id="capabilities">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="chapter">CHAPTER 02</div>
+        <h2>业务全景架构<em>CAPABILITY STACK</em></h2>
+        <p>全方位的技术服务与解决方案：从数据到应用，四层能力贯通交付</p>
+      </div>
+      <div class="stack">
+        <div class="layer">
+          <div class="lv"><b>L1</b><span>应用层</span><small>APPLICATION</small></div>
+          <div class="items">
+            <div class="item"><h5>行业智能应用</h5><p>面向业务场景的 AI 助手与工具</p></div>
+            <div class="item"><h5>决策驾驶舱</h5><p>关键指标可视化与异常预警</p></div>
+            <div class="item"><h5>系统定制开发</h5><p>贴合真实流程的软件交付</p></div>
+          </div>
+        </div>
+        <div class="layer">
+          <div class="lv"><b>L2</b><span>平台层</span><small>PLATFORM</small></div>
+          <div class="items">
+            <div class="item"><h5>系统集成</h5><p>与既有业务系统双向打通</p></div>
+            <div class="item"><h5>流程与权限</h5><p>统一账号、审批与数据权限</p></div>
+            <div class="item"><h5>接口与中台</h5><p>把数据与能力服务化输出</p></div>
+          </div>
+        </div>
+        <div class="layer">
+          <div class="lv"><b>L3</b><span>模型层</span><small>MODEL</small></div>
+          <div class="items">
+            <div class="item"><h5>AI 应用软件开发</h5><p>场景化模型能力封装</p></div>
+            <div class="item"><h5>AI 基础软件开发</h5><p>算法组件与推理服务</p></div>
+            <div class="item"><h5>模型微调与部署</h5><p>支持私有化环境落地</p></div>
+          </div>
+        </div>
+        <div class="layer">
+          <div class="lv"><b>L4</b><span>数据层</span><small>DATA</small></div>
+          <div class="items">
+            <div class="item"><h5>数据处理服务</h5><p>采集、清洗、标注与入库</p></div>
+            <div class="item"><h5>数据治理</h5><p>指标口径统一与质量校验</p></div>
+            <div class="item"><h5>云与安全</h5><p>资源弹性调度与合规管控</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-head" style="margin-top:100px;margin-bottom:0">
+        <div class="chapter">CORE CAPABILITIES</div>
+        <h2>AI 能力矩阵<em>FROM MODEL TO BUSINESS</em></h2>
+      </div>
+      <div class="matrix" style="margin-top:40px">
+        <div class="card"><div class="num">01</div><h4>人工智能应用软件开发</h4><p>面向具体业务场景构建可用的 AI 应用，从交互设计、提示词工程到结果校验一体化交付</p></div>
+        <div class="card"><div class="num">02</div><h4>人工智能基础软件开发</h4><p>算法组件、推理服务与模型工程化能力，为上层的场景应用提供稳定、可复用的技术底座</p></div>
+        <div class="card"><div class="num">03</div><h4>人工智能行业应用系统集成</h4><p>把 AI 能力接入客户既有的业务系统，打通数据流与业务流，避免形成新的信息孤岛</p></div>
+        <div class="card"><div class="num">04</div><h4>软件开发与技术服务</h4><p>定制化软件研发、信息技术咨询与技术培训，覆盖从需求梳理到上线运维的完整周期</p></div>
+      </div>
+      <p class="note">四项核心能力互为支撑，可单独交付，也可组合成完整解决方案。</p>
+    </div>
+  </section>
+
+  <!-- 03 交付体系 -->
+  <section class="block" id="delivery">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="chapter">CHAPTER 03</div>
+        <h2>服务流程<em>HOW WE DELIVER</em></h2>
+        <p>让每一个阶段都可被验收</p>
+      </div>
+      <div class="flow">
+        <div class="step"><div class="circle">01</div><h4>需求诊断</h4><p>走进业务现场，明确要解决的问题、可用的数据与验收标准</p><span class="out">交付：需求诊断报告</span></div>
+        <div class="step"><div class="circle">02</div><h4>方案设计</h4><p>拆解业务流程，选定技术路线，先做出可交互的原型</p><span class="out">交付：方案与原型</span></div>
+        <div class="step"><div class="circle">03</div><h4>敏捷开发</h4><p>小步迭代推进，每轮结束都能看到可运行的真实版本</p><span class="out">交付：可运行版本</span></div>
+        <div class="step"><div class="circle">04</div><h4>集成上线</h4><p>与既有系统对接，完成数据迁移、权限配置与用户培训</p><span class="out">交付：上线系统</span></div>
+        <div class="step"><div class="circle">05</div><h4>持续运营</h4><p>监控运行指标，定期复盘并规划下一阶段的能力扩展</p><span class="out">交付：运维与迭代计划</span></div>
+      </div>
+      <div class="principle"><b>阶段原则</b><span>每个阶段都以可验收的交付物收口——不做只有汇报、没有产出的中间环节。</span></div>
+
+      <div class="sec-head" style="margin-top:110px">
+        <div class="chapter">ENGAGEMENT MODELS</div>
+        <h2>交付模式<em>PROJECT VS RETAINER</em></h2>
+      </div>
+      <div class="versus">
+        <div class="card model">
+          <div class="tagline">MODEL A</div>
+          <h4>项目制交付</h4>
+          <ul>
+            <li>范围、周期与报价在启动前锁定，按里程碑推进</li>
+            <li>交付完整系统与源码，技术资产由客户自持</li>
+            <li>范围变更走书面确认，避免无限追加</li>
+            <li>上线后进入质保期，问题响应按合同约定</li>
+          </ul>
+          <div class="fit"><b>适合：</b>新建系统、流程改造、AI 场景首次落地</div>
+        </div>
+        <div class="vs">VS</div>
+        <div class="card model">
+          <div class="tagline">MODEL B</div>
+          <h4>长期技术托管</h4>
+          <ul>
+            <li>以季度为单位规划能力迭代，跟随业务持续演进</li>
+            <li>团队常驻参与需求，能跟上业务节奏的变化</li>
+            <li>持续优化模型效果、数据质量与运行稳定性</li>
+            <li>按人月或阶段计费，投入随业务量弹性调整</li>
+          </ul>
+          <div class="fit"><b>适合：</b>已有系统升级、数据治理、AI 能力持续扩展</div>
+        </div>
+      </div>
+
+      <div class="guarantees">
+        <div class="card">
+          <div class="top"><span class="num">01</span><span class="pill">可接管</span></div>
+          <h4>交付即资产</h4>
+          <p>源码、接口文档、部署手册与数据字典随系统一并移交，客户掌握完整的技术资产，不被单一供应商锁定</p>
+        </div>
+        <div class="card">
+          <div class="top"><span class="num">02</span><span class="pill">可审计</span></div>
+          <h4>过程可追溯</h4>
+          <p>需求、设计、变更与测试记录全程留痕，每个技术决定都能回溯到具体的业务场景与验收口径</p>
+        </div>
+        <div class="card">
+          <div class="top"><span class="num">03</span><span class="pill">可延续</span></div>
+          <h4>能力可延续</h4>
+          <p>上线不是终点，交接培训与运维机制同步建立，团队更替后系统仍能稳定运行并持续演进</p>
+        </div>
+      </div>
+      <div class="principle"><b>写入合同</b><span>三条保障不是口头承诺，而是逐条写进合同的验收条款，让交付结果可以被检验。</span></div>
+    </div>
+  </section>
+
+  <!-- 04 关于我们 -->
+  <section class="block alt" id="team">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="chapter">CHAPTER 04</div>
+        <h2>团队构成<em>OUR TEAM</em></h2>
+        <p>小团队，直接对结果负责</p>
+      </div>
+      <div class="team">
+        <div class="pitch">
+          <h3>一支能同时讲<span>业务语言</span><br>和<span>技术语言</span>的团队</h3>
+          <p>团队按职能分工但按项目组队，客户只需要对接一个人，背后是完整的技术与交付能力。</p>
+          <p>组织不大，但每个角色都直接对交付结果负责。</p>
+        </div>
+        <div class="roles">
+          <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></div>
+            <h4>算法与模型工程</h4><p>负责模型选型、微调与效果评估，把通用模型调成懂业务的专业模型</p>
+          </div>
+          <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg></div>
+            <h4>应用与平台开发</h4><p>负责界面交互、业务流程与系统集成实现，让 AI 能力真正被一线用起来</p>
+          </div>
+          <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V16h8v-1.3A7 7 0 0 0 12 2z"/></svg></div>
+            <h4>解决方案与售前</h4><p>负责需求诊断、方案设计与技术可行性判断，先讲清边界再谈承诺</p>
+          </div>
+          <div class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h4>交付与运维</h4><p>负责上线部署、数据迁移与持续运维，接住系统跑起来之后的每个问题</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-head" style="margin-top:110px;margin-bottom:0">
+        <div class="chapter">WAYS TO WORK</div>
+        <h2>合作方式<em>CHOOSE YOUR FIT</em></h2>
+      </div>
+      <div class="ways" style="margin-top:40px">
+        <div class="card">
+          <div class="label"><span>ADVISORY</span></div>
+          <h4>长期技术顾问</h4>
+          <p>按月或按阶段提供技术选型、方案评审与团队带教，适合内部已有技术团队、需要外部视角的场景。</p>
+          <ul><li>以顾问身份参与，不接管日常开发</li></ul>
+        </div>
+        <div class="card main">
+          <div class="label"><span>PRIMARY</span><em>最常用</em></div>
+          <h4>项目定制开发</h4>
+          <p>从需求诊断到上线运维的完整项目，适合业务目标明确、需要一次性建成系统的场景。</p>
+          <ul>
+            <li>需求与方案先行，技术边界在报价前讲清</li>
+            <li>按里程碑验收，每阶段都有可运行产出</li>
+            <li>源码、文档与部署手册随系统一并交付</li>
+            <li>上线后进入质保期，按合同约定响应</li>
+          </ul>
+          <p class="note" style="margin-top:auto;padding-top:18px">交付周期取决于系统范围，以方案确认为准</p>
+        </div>
+        <div class="card">
+          <div class="label"><span>INTEGRATION</span></div>
+          <h4>系统集成与运维</h4>
+          <p>负责与既有系统对接、上线部署与日常运维，适合系统已建成但缺少专职运维力量的场景。</p>
+          <ul><li>按需响应，可与前两种方式叠加</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 联系我们 -->
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="chapter">CHAPTER 05</div>
+        <h2>联系我们<em>GET IN TOUCH</em></h2>
+        <p>从一次具体的问题开始</p>
+      </div>
+      <div class="contact">
+        <div>
+          <h3>欢迎带着具体的业务问题来聊，<br>我们先判断能不能做，再谈怎么做。</h3>
+          <p class="sub">期待与您一起，把 AI 装进真实业务。</p>
+        </div>
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+            <div><small>EMAIL</small><a href="mailto:coolxuhanbing@gmail.com">coolxuhanbing@gmail.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+            <div><small>ADDRESS</small><span>浙江省杭州市</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 12h8M12 8v8"/></svg></div>
+            <div><small>COMPANY</small><span>杭州乾腾元科技有限公司</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 杭州乾腾元科技有限公司　QTY Technology Co., Ltd.</span>
+    <span><a href="https://ice55.github.io/qty-privacy/">隐私政策 Privacy Policy</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
