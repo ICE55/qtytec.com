@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>乾腾元科技 QTY Technology · AI 驱动，智创未来</title>
 <meta name="description" content="杭州乾腾元科技有限公司：以人工智能应用软件与基础软件开发为核心，提供系统集成、软件开发、信息技术咨询与数据处理的一体化技术服务。">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2304101F'/%3E%3Ctext x='32' y='45' font-family='Arial' font-weight='700' font-size='38' text-anchor='middle' fill='%232FD8F5'%3EQ%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:image" content="https://ice55.github.io/qtytec.com/assets/mark-512.png">
 <style>
   :root {
     --bg: #04101F;
@@ -39,11 +41,7 @@
   }
   header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
   .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .5px; }
-  .brand-mark {
-    width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center;
-    background: var(--navy); color: var(--cyan); font-family: var(--num); font-size: 20px;
-    box-shadow: 0 0 0 1px rgba(47, 216, 245, .35) inset;
-  }
+  .brand-mark { width: 38px; height: 38px; display: block; filter: drop-shadow(0 0 6px rgba(47, 216, 245, .35)); }
   .brand small { display: block; font-size: 10px; font-weight: 500; color: var(--muted); letter-spacing: 2px; line-height: 1.2; }
   nav { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
   nav a:hover { color: var(--cyan); }
@@ -91,11 +89,11 @@
   .orbit .r1 .dot { top: -6px; left: calc(50% - 6px); }
   .orbit .r2 .dot { bottom: 8%; left: 6%; background: var(--sky); box-shadow: 0 0 14px var(--sky); }
   .orbit .core {
-    position: absolute; inset: 38%; border-radius: 50%; display: grid; place-items: center;
-    background: radial-gradient(circle at 35% 30%, #1d5a8f, var(--navy) 60%, #0a2443);
-    box-shadow: 0 0 60px rgba(47, 216, 245, .35);
-    font-family: var(--num); font-size: clamp(30px, 4vw, 46px); color: var(--cyan); letter-spacing: 2px;
+    position: absolute; inset: 33%; display: grid; place-items: center;
+    animation: float 6s ease-in-out infinite;
   }
+  .orbit .core img { width: 100%; height: auto; filter: drop-shadow(0 0 28px rgba(47, 216, 245, .45)); }
+  @keyframes float { 50% { transform: translateY(-8px); } }
   .orbit .tag {
     position: absolute; padding: 6px 14px; border-radius: 999px; font-size: 13px;
     background: rgba(11, 33, 64, .9); border: 1px solid var(--line); color: var(--text); white-space: nowrap;
@@ -268,7 +266,7 @@
     .orbit .tag { display: none; }
     .principle { flex-direction: column; align-items: flex-start; }
   }
-  @media (prefers-reduced-motion: reduce) { .orbit .ring { animation: none; } html { scroll-behavior: auto; } }
+  @media (prefers-reduced-motion: reduce) { .orbit .ring, .orbit .core { animation: none; } html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
@@ -276,7 +274,7 @@
 <header>
   <div class="wrap">
     <a class="brand" href="#top">
-      <span class="brand-mark">Q</span>
+      <img class="brand-mark" src="assets/mark-512.png" alt="乾腾元科技 logo">
       <span>乾腾元科技<small>QTY TECHNOLOGY</small></span>
     </a>
     <nav>
@@ -308,7 +306,7 @@
         <div class="ring r1"><i class="dot"></i></div>
         <div class="ring r2"><i class="dot"></i></div>
         <div class="ring r3"></div>
-        <div class="core">QTY</div>
+        <div class="core"><img src="assets/mark-512.png" alt=""></div>
         <span class="tag t1">AI 应用开发</span>
         <span class="tag t2">系统集成</span>
         <span class="tag t3">数据处理</span>
